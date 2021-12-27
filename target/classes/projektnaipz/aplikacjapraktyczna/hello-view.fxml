@@ -1,16 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="projektnaipz.aplikacjapraktyczna.HelloController">
+<VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projektnaipz.aplikacjapraktyczna.LoginController">
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
+   <Accordion />
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+    <Label fx:id="welcomeText" />
+   <GridPane prefHeight="222.0" prefWidth="760.0">
+     <columnConstraints>
+       <ColumnConstraints hgrow="NEVER" maxWidth="620.0" minWidth="10.0" prefWidth="380.0" />
+       <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="454.0" minWidth="10.0" prefWidth="380.0" />
+         <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="454.0" minWidth="10.0" prefWidth="380.0" />
+         <ColumnConstraints hgrow="SOMETIMES" maxWidth="454.0" minWidth="10.0" prefWidth="380.0" />
+     </columnConstraints>
+     <rowConstraints>
+       <RowConstraints maxHeight="125.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+       <RowConstraints maxHeight="125.0" minHeight="0.0" prefHeight="46.0" vgrow="SOMETIMES" />
+       <RowConstraints maxHeight="121.0" minHeight="10.0" prefHeight="121.0" vgrow="SOMETIMES" />
+     </rowConstraints>
+      <children>
+          <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" onMouseClicked="#onLoginButtonClick" prefHeight="30.0" prefWidth="100.0" text="Zaloguj" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" onMouseClicked="#onRegisterButtonClick" prefHeight="30.0" prefWidth="100.0" text="Zarejestruj" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+         <PasswordField prefHeight="24.0" prefWidth="430.0" promptText="hasło" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+         <TextField promptText="login" GridPane.columnIndex="1" GridPane.columnSpan="2" />
+      </children>
+   </GridPane>
 </VBox>
