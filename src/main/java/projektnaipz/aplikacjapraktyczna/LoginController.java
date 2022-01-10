@@ -18,7 +18,7 @@ public class LoginController {
     private TextField passField;
 
     @FXML
-    protected void onLoginButtonClick() {
+    protected void onLoginButtonClick() throws IOException {
         // pobranie wartości z pól tekstowych
         String login = loginField.getText();
         String pass = passField.getText();
@@ -58,6 +58,13 @@ public class LoginController {
             // jeśli wszystko ok
             if ( allFieldsFilled && passwordsMatch){
                 welcomeText.setText("Zalogowano.");
+
+                // przejście do głównego menu
+                FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("main-view.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+                Stage stageTheLabelBelongs = (Stage) welcomeText.getScene().getWindow();
+                stageTheLabelBelongs.setScene(scene);
+                stageTheLabelBelongs.show();
             }
         }
         
