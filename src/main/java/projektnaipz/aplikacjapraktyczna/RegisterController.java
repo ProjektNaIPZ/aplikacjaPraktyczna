@@ -13,14 +13,69 @@ public class RegisterController {
 
     @FXML
     private Label errorText;
+    @FXML
     private TextField loginField;
+    @FXML
     private TextField passField;
+    @FXML
     private TextField repeatField;
+    @FXML
+    private TextField sumField;
 
     
     @FXML
     protected void onRegisterButtonClick() throws IOException {
         
-        errorText.setText("Podaj dane!");
+        // pobranie wartości z pól tekstowych
+        String login = loginField.getText();
+        String pass = passField.getText();
+        String repeat = repeatField.getText();
+        String sum = sumField.getText();
+
+        // falgi
+        Boolean allFieldsFilled = false;
+        Boolean passwordsMatch = false;
+        Boolean sumCorrect = false;
+
+        // czyszczenie pola tekstowego
+        errorText.setText("");
+
+        // czy wszystkie pola są wypełnione
+        if(login.isEmpty() || pass.isEmpty() || repeat.isEmpty() || sum.isEmpty()){
+            errorText.setText("Wypełnij wszystkie pola!");
+        }else {
+            allFieldsFilled = true;
+        }
+        // czy podane hasła są takie same
+        if(!pass.equals(repeat)){
+            String tekst = errorText.getText();
+            errorText.setText(tekst + "\nHasła nie są takie same!");
+        }else {
+            passwordsMatch = true;
+        }
+        // czy suma bezpieczenstwa poprawna
+        if(!sum.equals("5")){
+            String tekst = errorText.getText();
+            errorText.setText(tekst + "\nBłędnie podana suma!");
+        }else {
+            sumCorrect = true;
+        }
+
+        // jeśli wszystko ok
+        if ( allFieldsFilled && passwordsMatch && sumCorrect ){
+            errorText.setText("Rejestracja zakończona powodzeniem.");
+        }
+
+
+    }
+
+    @FXML
+    protected void onBackButtonClick() throws IOException {
+        // przejście do ekranu logowania
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("login-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+        Stage stageTheLabelBelongs = (Stage) errorText.getScene().getWindow();
+        stageTheLabelBelongs.setScene(scene);
+        stageTheLabelBelongs.show();
     }
 }

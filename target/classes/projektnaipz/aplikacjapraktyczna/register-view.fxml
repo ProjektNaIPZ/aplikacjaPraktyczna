@@ -17,7 +17,10 @@
     </padding>
    <Accordion />
 
-    <Label fx:id="errorText" />
+    <Label fx:id="errorText" text="Wypełnij wszystkie pola:">
+      <VBox.margin>
+         <Insets />
+      </VBox.margin></Label>
    <GridPane prefHeight="222.0" prefWidth="760.0">
      <columnConstraints>
        <ColumnConstraints hgrow="NEVER" maxWidth="620.0" minWidth="10.0" prefWidth="380.0" />
@@ -27,15 +30,18 @@
      </columnConstraints>
      <rowConstraints>
        <RowConstraints maxHeight="125.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
-       <RowConstraints maxHeight="125.0" minHeight="0.0" prefHeight="46.0" vgrow="SOMETIMES" />
-         <RowConstraints maxHeight="125.0" minHeight="10.0" prefHeight="46.0" vgrow="SOMETIMES" />
-       <RowConstraints maxHeight="121.0" minHeight="10.0" prefHeight="121.0" vgrow="SOMETIMES" />
+       <RowConstraints maxHeight="125.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="125.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="125.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+       <RowConstraints maxHeight="121.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
      </rowConstraints>
       <children>
-         <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" onMouseClicked="#onRegisterButtonClick" prefHeight="30.0" prefWidth="100.0" text="Zarejestruj" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-         <PasswordField prefHeight="24.0" prefWidth="430.0" promptText="hasło" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
-         <TextField promptText="login" GridPane.columnIndex="1" GridPane.columnSpan="2" />
-         <PasswordField prefHeight="24.0" prefWidth="448.0" promptText="powtórz hasło" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+         <TextField fx:id="loginField" promptText="login" GridPane.columnIndex="1" GridPane.columnSpan="2" />
+         <PasswordField fx:id="passField" promptText="hasło" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+         <PasswordField fx:id="repeatField" promptText="powtórz hasło" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2" />
+         <TextField fx:id="sumField" promptText="2+3=?" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+         <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" onMouseClicked="#onRegisterButtonClick" prefHeight="30.0" prefWidth="100.0" text="Zarejestruj" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+         <Button alignment="CENTER" cancelButton="true" contentDisplay="CENTER" onMouseClicked="#onBackButtonClick" prefHeight="30.0" prefWidth="100.0" text="Wstecz" GridPane.columnIndex="1" GridPane.rowIndex="4" />
       </children>
    </GridPane>
 </VBox>
