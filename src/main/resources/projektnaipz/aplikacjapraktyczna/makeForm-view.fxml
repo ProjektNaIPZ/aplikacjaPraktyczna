@@ -33,7 +33,7 @@
        <RowConstraints maxHeight="121.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
      </rowConstraints>
       <children>
-         <Button alignment="CENTER" cancelButton="true" contentDisplay="CENTER" onMouseClicked="#onBackButtonClick" prefHeight="30.0" prefWidth="100.0" text="Wstecz" GridPane.rowIndex="4" />
+         <Button alignment="CENTER" cancelButton="true" contentDisplay="CENTER" onAction="#onBackButtonClick" onMouseClicked="#onBackButtonClick" prefHeight="30.0" prefWidth="100.0" text="Wstecz" GridPane.rowIndex="4" />
       </children>
    </GridPane>
 </VBox>

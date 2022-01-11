@@ -33,10 +33,10 @@
        <RowConstraints maxHeight="121.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
      </rowConstraints>
       <children>
-         <Button alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#onLogoutButtonClick" prefHeight="30.0" prefWidth="100.0" text="Wyloguj" GridPane.rowIndex="4" />
-         <Button alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#onMakeFormButtonClick" prefHeight="30.0" prefWidth="250.0" text="Stwórz nową ankietę" GridPane.columnIndex="1" />
-         <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" text="Weź udział w istniejącej ankiecie" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-         <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" text="Twoje ankiety" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         <Button alignment="CENTER" contentDisplay="CENTER" onAction="#onMakeFormButtonClick" onMouseClicked="#onMakeFormButtonClick" prefHeight="30.0" prefWidth="250.0" text="Stwórz nową ankietę" GridPane.columnIndex="1" />
+         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onTakeButtonClick" onMouseClicked="#onTakeButtonClick" prefHeight="30.0" prefWidth="250.0" text="Weź udział w istniejącej ankiecie" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onYourFormsButtonClick" onMouseClicked="#onYourFormsButtonClick" prefHeight="30.0" prefWidth="250.0" text="Twoje ankiety" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         <Button alignment="CENTER" contentDisplay="CENTER" onAction="#onLogoutButtonClick" onMouseClicked="#onLogoutButtonClick" prefHeight="30.0" prefWidth="100.0" text="Wyloguj" GridPane.rowIndex="4" />
       </children>
    </GridPane>
 </VBox>
