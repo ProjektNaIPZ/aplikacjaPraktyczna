@@ -37,7 +37,7 @@ public class LoginController {
             allFieldsFilled = true;
         }
 
-        // jesli nie znaleziono użytkownika o danym loginie, to błąd                                     TODO
+        // jesli nie znaleziono użytkownika o danym loginie, to błąd
         String loginDB = "admin";
 
         if(!login.equals(loginDB)){
@@ -45,7 +45,7 @@ public class LoginController {
         } 
         else // znaleziono login w bazie danych 
         {
-            // pobranie hasła z bazy danych dla podanego loginu                                              TODO
+            // pobranie hasła z bazy danych dla podanego loginu
             String passDB = "admin";
 
             // jesli hasła się nie zgadzają
@@ -67,7 +67,6 @@ public class LoginController {
                 stageTheLabelBelongs.show();
             }
         }
-        
     }
 
     @FXML
