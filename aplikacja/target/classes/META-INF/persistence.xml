@@ -6,7 +6,7 @@
     <persistence-unit name="mojabaza" transaction-type="RESOURCE_LOCAL">
         <properties>
             <!-- <property name="javax.persistence.jdbc.driver" value="org.mariadb.Driver" /> -->
-            <property name="dialect" value="org.hibernate.dialect.SQLiteDialect" />
+<!--            <property name="dialect" value="org.hibernate.dialect.SQLiteDialect" />-->
             <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC" />
             <property name="javax.persistence.jdbc.url" value="jdbc:sqlite::memory:" />
             <property name="javax.persistence.jdbc.user" value="" />
