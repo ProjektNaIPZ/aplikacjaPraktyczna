@@ -82,7 +82,7 @@ public class MakeFormController {
 
 
         
-        /// TUTAJ WYSYLAMY TRANSAKCJE I WPIS DO BAZY DANYCH
+        /// TUTAJ WYSYLAMY TRANSAKCJE I TWORZYMY WPIS DO BAZY DANYCH
 
 
 
