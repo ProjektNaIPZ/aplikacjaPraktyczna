@@ -5,6 +5,7 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -21,11 +22,13 @@ public class RegisterController {
     private TextField repeatField;
     @FXML
     private TextField sumField;
+    @FXML
+    private Button registerBtn;
 
     
     @FXML
     protected void onRegisterButtonClick() throws IOException {
-        
+
         // pobranie wartości z pól tekstowych
         String login = loginField.getText();
         String pass = passField.getText();
@@ -33,9 +36,9 @@ public class RegisterController {
         String sum = sumField.getText();
 
         // falgi
-        Boolean allFieldsFilled = false;
-        Boolean passwordsMatch = false;
-        Boolean sumCorrect = false;
+        boolean allFieldsFilled = false;
+        boolean passwordsMatch = false;
+        boolean sumCorrect = false;
 
         // czyszczenie pola tekstowego
         errorText.setText("");
@@ -62,11 +65,15 @@ public class RegisterController {
         }
 
         // jeśli wszystko ok
-        if ( allFieldsFilled && passwordsMatch && sumCorrect ){
-            errorText.setText("Rejestracja zakończona powodzeniem.");
+        if (allFieldsFilled && passwordsMatch && sumCorrect ){
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("login-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+            Stage stageTheLabelBelongs = (Stage) errorText.getScene().getWindow();
+
+            App.db.register(login, pass);
+            stageTheLabelBelongs.setScene(scene);
+            stageTheLabelBelongs.show();
         }
-
-
     }
 
     @FXML

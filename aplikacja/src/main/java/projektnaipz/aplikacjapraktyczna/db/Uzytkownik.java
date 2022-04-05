@@ -1,47 +1,25 @@
 package projektnaipz.aplikacjapraktyczna.db;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
-@Entity
 public class Uzytkownik {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    private String email;
-    private String haslo;
-    private Boolean admin;
+    private final String login;
+    private final String haslo;
+    private final boolean admin;
 
-    public long getId() {
-        return id;
+    public Uzytkownik(String login, String haslo, boolean admin){
+        this.login = login;
+        this.haslo = haslo;
+        this.admin = admin;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public String getLogin() {
+        return login;
     }
 
     public String getHaslo() {
         return haslo;
     }
 
-    public void setHaslo(String haslo) {
-        this.haslo = haslo;
-    }
-
-    public Boolean getAdmin() {
+    public boolean isAdmin() {
         return admin;
-    }
-
-    public void setAdmin(Boolean admin) {
-        this.admin = admin;
     }
 }

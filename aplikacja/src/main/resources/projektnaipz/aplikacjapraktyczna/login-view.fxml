@@ -34,7 +34,7 @@
          <TextField fx:id="loginField" promptText="login" GridPane.columnIndex="1" GridPane.columnSpan="2" />
          <PasswordField fx:id="passField" prefHeight="24.0" prefWidth="430.0" promptText="hasło" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
           <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="true" onAction="#onLoginButtonClick" onMouseClicked="#onLoginButtonClick" prefHeight="30.0" prefWidth="100.0" text="Zaloguj" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-         <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="false" onAction="#onRegisterButtonClick" onMouseClicked="#onRegisterButtonClick" prefHeight="30.0" prefWidth="100.0" text="Zarejestruj" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+         <Button alignment="CENTER" contentDisplay="CENTER" defaultButton="false" onAction="#onGoToRegistrationButtonClick" onMouseClicked="#onGoToRegistrationButtonClick" prefHeight="30.0" prefWidth="100.0" text="Zarejestruj" GridPane.columnIndex="2" GridPane.rowIndex="2" />
       </children>
    </GridPane>
 </VBox>
