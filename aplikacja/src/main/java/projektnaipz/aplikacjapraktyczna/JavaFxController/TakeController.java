@@ -1,4 +1,4 @@
-package projektnaipz.aplikacjapraktyczna;
+package projektnaipz.aplikacjapraktyczna.JavaFxController;
 
 import java.io.IOException;
 
@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import projektnaipz.aplikacjapraktyczna.App;
 
 public class TakeController {
     @FXML

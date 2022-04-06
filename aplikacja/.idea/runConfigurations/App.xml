@@ -4,7 +4,7 @@
     <module name="aplikacja" />
     <extension name="coverage">
       <pattern>
-        <option name="PATTERN" value="projektnaipz.aplikacjapraktyczna.*" />
+        <option name="PATTERN" value="projektnaipz.aplikacjapraktyczna.JavaFxController.*" />
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>

@@ -1,4 +1,4 @@
-package projektnaipz.aplikacjapraktyczna;
+package projektnaipz.aplikacjapraktyczna.JavaFxController;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -6,7 +6,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import projektnaipz.aplikacjapraktyczna.db.Uzytkownik;
+import projektnaipz.aplikacjapraktyczna.App;
+import projektnaipz.aplikacjapraktyczna.db.model.Uzytkownik;
 
 import java.io.IOException;
 
@@ -54,6 +55,7 @@ public class LoginController {
             // jeśli wszystko ok
             if (allFieldsFilled && passwordsMatch){
                 welcomeText.setText("Zalogowano.");
+                App.zalogowany = u;
                 // przejście do głównego menu
                 FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("main-view.fxml"));
                 Scene scene = new Scene(fxmlLoader.load(), 800, 600);

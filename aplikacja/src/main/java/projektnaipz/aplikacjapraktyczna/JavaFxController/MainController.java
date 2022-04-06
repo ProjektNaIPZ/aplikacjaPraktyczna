@@ -1,12 +1,13 @@
-package projektnaipz.aplikacjapraktyczna;
-
-import java.io.IOException;
+package projektnaipz.aplikacjapraktyczna.JavaFxController;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import projektnaipz.aplikacjapraktyczna.App;
+
+import java.io.IOException;
 
 public class MainController {
 
@@ -34,6 +35,7 @@ public class MainController {
     @FXML
     protected void onLogoutButtonClick() throws IOException {
         // powrót do ekranu logowania
+        App.zalogowany = null;
         loadWindow("login-view.fxml");
     }
 

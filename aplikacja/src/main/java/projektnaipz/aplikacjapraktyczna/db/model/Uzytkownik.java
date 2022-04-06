@@ -1,11 +1,13 @@
-package projektnaipz.aplikacjapraktyczna.db;
+package projektnaipz.aplikacjapraktyczna.db.model;
 
 public class Uzytkownik {
+    private final int id;
     private final String login;
     private final String haslo;
     private final boolean admin;
 
-    public Uzytkownik(String login, String haslo, boolean admin){
+    public Uzytkownik(int id, String login, String haslo, boolean admin){
+        this.id = id;
         this.login = login;
         this.haslo = haslo;
         this.admin = admin;
@@ -21,5 +23,9 @@ public class Uzytkownik {
 
     public boolean isAdmin() {
         return admin;
+    }
+
+    public int getId() {
+        return id;
     }
 }

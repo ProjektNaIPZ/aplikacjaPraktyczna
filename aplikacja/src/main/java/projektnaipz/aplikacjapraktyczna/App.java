@@ -5,12 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import projektnaipz.aplikacjapraktyczna.db.DbController;
+import projektnaipz.aplikacjapraktyczna.db.model.Uzytkownik;
 
 import java.io.IOException;
 
 public class App extends Application {
 
-    static DbController db;
+    static public DbController db;
+    static public Uzytkownik zalogowany;
 
     @Override
     public void start(Stage stage) throws IOException {

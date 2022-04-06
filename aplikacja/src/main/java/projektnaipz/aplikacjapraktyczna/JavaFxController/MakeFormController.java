@@ -1,8 +1,4 @@
-package projektnaipz.aplikacjapraktyczna;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+package projektnaipz.aplikacjapraktyczna.JavaFxController;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,8 +9,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import projektnaipz.aplikacjapraktyczna.App;
+import projektnaipz.aplikacjapraktyczna.db.model.Ankieta;
+import projektnaipz.aplikacjapraktyczna.db.model.Pytanie;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MakeFormController {
+    @FXML
+    public TextField title;
     @FXML
     private Label welcomeText;
     @FXML
@@ -58,6 +63,11 @@ public class MakeFormController {
         liczbaOdp.add(odp);
         listaPunktow.add(punktyOdp);
         liczbaPytan++;
+
+        title.setDisable(true);
+        question.clear();
+        answers.clear();
+        points.clear();
     }
 
     @FXML
@@ -79,16 +89,39 @@ public class MakeFormController {
             }
         }
 
+        List<Pytanie> listaObiektowPytanie = new ArrayList<>();
 
+        // tworzenie obiektow pytanie
+        int zapisaneOdp = 0;
+        int odpLimit = 0;
+        for(int i = 0; i < listaPytan.size(); i++){
+            List<String> odp = new ArrayList<>();
+            odpLimit = zapisaneOdp + liczbaOdp.get(i);
+            for(; zapisaneOdp < odpLimit; zapisaneOdp++){
+                odp.add(listaOdp.get(zapisaneOdp));
+            }
+            Pytanie p = new Pytanie(listaPytan.get(i), odp, listaPunktow.get(i));
+            listaObiektowPytanie.add(p);
+        }
 
-        
-        /// TUTAJ WYSYLAMY TRANSAKCJE I TWORZYMY WPIS DO BAZY DANYCH
+        String kodAnkiety = "generatorKodowAnkiety";
 
+        Ankieta ankieta = new Ankieta(title.getText(),
+                App.zalogowany.getId(),
+                kodAnkiety,
+                listaObiektowPytanie);
 
-
+        App.db.addAnkietaToDb(ankieta);
 
         // potwierdzenie wysłania ankiety
         welcomeText.setText("Ankieta wysłana poprawnie!");
         welcomeText.setTextFill(Color.web("Red"));
+
+        // powrót do głównego menu
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("main-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+        Stage stageTheLabelBelongs = (Stage) welcomeText.getScene().getWindow();
+        stageTheLabelBelongs.setScene(scene);
+        stageTheLabelBelongs.show();
     }
 }

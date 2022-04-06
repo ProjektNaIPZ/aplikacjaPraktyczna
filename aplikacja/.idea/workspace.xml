@@ -5,43 +5,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a805926d-d0f0-41d6-b5db-4c7f8865c650" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_11_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_28.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_13_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_13_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_13_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/model/Ankieta.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/model/Pytanie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/aplikacja.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aplikacja.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_5_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_gwenn_sqlite_dialect_0_1_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_istack_istack_commons_runtime_3_0_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_fastinfoset_FastInfoset_1_2_15.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_javax_activation_api_1_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_persistence_javax_persistence_api_2_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_12_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_runtime_2_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_txw2_2_3_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_1_2_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_core_5_6_4_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_2_4_2_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_4_3_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_spec_javax_transaction_jboss_transaction_api_1_2_spec_1_1_1_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jvnet_staxex_stax_ex_1_8.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_xerial_sqlite_jdbc_3_36_0_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_17_0_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_18.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_linux_17_0_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_linux_18.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_17_0_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_18.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_linux_17_0_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_linux_18.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_17_0_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_18.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_linux_17_0_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_fxml_linux_18.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_17_0_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_18.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_linux_17_0_0_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_linux_18.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/App.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/App.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/RegisterController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/Ankieta.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/MakeFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/MakeFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/RegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/RegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/TakeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/TakeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/UserFormsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/UserFormsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/DbController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/DbController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/Odpowiedzi.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/Uzytkownik.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/Uzytkownik.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/Uzytkownik.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/model/Uzytkownik.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/projektnaipz/aplikacjapraktyczna/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/projektnaipz/aplikacjapraktyczna/login-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/projektnaipz/aplikacjapraktyczna/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/projektnaipz/aplikacjapraktyczna/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/projektnaipz/aplikacjapraktyczna/makeForm-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/projektnaipz/aplikacjapraktyczna/makeForm-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/projektnaipz/aplikacjapraktyczna/register-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/projektnaipz/aplikacjapraktyczna/register-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/projektnaipz/aplikacjapraktyczna/take-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/projektnaipz/aplikacjapraktyczna/take-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/projektnaipz/aplikacjapraktyczna/userForms-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/projektnaipz/aplikacjapraktyczna/userForms-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/projektnaipz/aplikacjapraktyczna/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projektnaipz/aplikacjapraktyczna/login-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projektnaipz/aplikacjapraktyczna/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projektnaipz/aplikacjapraktyczna/main-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projektnaipz/aplikacjapraktyczna/makeForm-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projektnaipz/aplikacjapraktyczna/makeForm-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/projektnaipz/aplikacjapraktyczna/register-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projektnaipz/aplikacjapraktyczna/register-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projektnaipz/aplikacjapraktyczna/take-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projektnaipz/aplikacjapraktyczna/take-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/projektnaipz/aplikacjapraktyczna/userForms-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projektnaipz/aplikacjapraktyczna/userForms-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +99,7 @@
       <module name="aplikacjaPraktyczna" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="projektnaipz.aplikacjapraktyczna.*" />
+          <option name="PATTERN" value="projektnaipz.aplikacjapraktyczna.JavaFxController.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
