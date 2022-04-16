@@ -35,19 +35,19 @@ public class MakeFormController {
     private int liczbaPytan = 0;
 
     // przechowuje treść pytań
-    List<String> listaPytan = new ArrayList<String>();
+    List<String> listaPytan = new ArrayList<>();
 
     // pytanie o indeksie 'i' ma 'x' możliwych odpowiedzi
-    List<Integer> liczbaOdp = new ArrayList<Integer>();
+    List<Integer> liczbaOdp = new ArrayList<>();
 
     // pytanie o indeksie 'i' ma 'x' punktów na odpowiedzi
-    List<Integer> listaPunktow = new ArrayList<Integer>();
+    List<Integer> listaPunktow = new ArrayList<>();
 
     // przechowuje odpowiedzi
-    List<String> listaOdp = new ArrayList<String>();
+    List<String> listaOdp = new ArrayList<>();
 
     @FXML
-    protected void addQuestion() throws IOException{
+    protected void addQuestion() {
         // pobranie wartości z pól tekstowych
         String pytanie = question.getText();
         int odp = Integer.parseInt(answers.getText());
@@ -61,6 +61,7 @@ public class MakeFormController {
 
         // dane
         liczbaOdp.add(odp);
+        listaPytan.add(pytanie);
         listaPunktow.add(punktyOdp);
         liczbaPytan++;
 
@@ -82,8 +83,9 @@ public class MakeFormController {
 
     @FXML
     protected void onApplyButtonClick() throws IOException {
+
         // pobranie wartosci z pól odpowiedzi
-        for(Node nodeIn:((VBox)vbox).getChildren()){
+        for(Node nodeIn: vbox.getChildren()){
             if(nodeIn instanceof TextField){
                 listaOdp.add(((TextField)nodeIn).getText());
             }
@@ -93,7 +95,7 @@ public class MakeFormController {
 
         // tworzenie obiektow pytanie
         int zapisaneOdp = 0;
-        int odpLimit = 0;
+        int odpLimit;
         for(int i = 0; i < listaPytan.size(); i++){
             List<String> odp = new ArrayList<>();
             odpLimit = zapisaneOdp + liczbaOdp.get(i);
@@ -104,7 +106,7 @@ public class MakeFormController {
             listaObiektowPytanie.add(p);
         }
 
-        String kodAnkiety = "generatorKodowAnkiety";
+        String kodAnkiety = Integer.toString(getRandomNumber(100000, 999999));
 
         Ankieta ankieta = new Ankieta(title.getText(),
                 App.zalogowany.getId(),
@@ -123,5 +125,9 @@ public class MakeFormController {
         Stage stageTheLabelBelongs = (Stage) welcomeText.getScene().getWindow();
         stageTheLabelBelongs.setScene(scene);
         stageTheLabelBelongs.show();
+    }
+
+    public int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
     }
 }

@@ -23,7 +23,7 @@ public class MainController {
     @FXML
     protected void onTakeButtonClick() throws IOException {
         // przejście do ekranu tworzenia ankiety
-        loadWindow("take-view.fxml");
+        loadWindow("giveCode-view.fxml");
     }
 
     @FXML

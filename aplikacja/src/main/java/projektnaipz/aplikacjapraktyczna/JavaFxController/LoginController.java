@@ -40,7 +40,7 @@ public class LoginController {
         }
 
         // jesli nie znaleziono użytkownika o danym loginie, to błąd
-        Uzytkownik u = App.db.findUserByLogin(login);
+        Uzytkownik u = App.db.getUserByLogin(login);
         if(u == null) {
             welcomeText.setText("\nNie znaleziono użytkownika o podanym loginie!");
         }
