@@ -1,5 +1,7 @@
 package projektnaipz.aplikacjapraktyczna;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -24,7 +26,7 @@ public class App extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, JsonParseException, JsonMappingException {
         db = new DbController();
         launch();
     }
