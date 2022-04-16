@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import projektnaipz.aplikacjapraktyczna.db.model.Ankieta;
 import projektnaipz.aplikacjapraktyczna.db.model.Uzytkownik;
 
+import java.io.IOException;
 import java.sql.*;
 
 public class DbController {
@@ -21,9 +22,9 @@ public class DbController {
             objectMapper = new ObjectMapper();
             st = conn.createStatement();
 
-            st.executeUpdate("DROP TABLE odpowiedzi");
-            st.executeUpdate("DROP TABLE ankiety");
-            st.executeUpdate("DROP TABLE uzytkownicy");
+//            st.executeUpdate("DROP TABLE odpowiedzi");
+//            st.executeUpdate("DROP TABLE ankiety");
+//            st.executeUpdate("DROP TABLE uzytkownicy");
 
             st.execute("CREATE TABLE IF NOT EXISTS uzytkownicy " +
                     "(id INT(11) NOT NULL AUTO_INCREMENT, " +
@@ -55,7 +56,7 @@ public class DbController {
 //            st.executeUpdate("DELETE FROM ankiety");
 //            st.executeUpdate("DELETE FROM odpowiedzi");
 
-            st.executeUpdate("INSERT INTO uzytkownicy (login, haslo, admin) values ('admin', 'admin', '1')");
+//            st.executeUpdate("INSERT INTO uzytkownicy (login, haslo, admin) values ('admin', 'admin', '1')");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -75,11 +76,31 @@ public class DbController {
         System.out.println("Zarejestrowano " + login + " " + haslo);
     }
 
-    public Uzytkownik findUserByLogin(String login){
+    public Uzytkownik getUserByLogin(String login){
         Uzytkownik u = null;
         try {
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM uzytkownicy WHERE login = ?");
             ps.setString(1, login);
+            ResultSet rs = ps.executeQuery();
+            if (!rs.next()) {
+                return null;
+            } else {
+                u = new Uzytkownik(rs.getInt("id"),
+                        rs.getString("login"),
+                        rs.getString("haslo"),
+                        rs.getBoolean("admin"));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return u;
+    }
+
+    public Uzytkownik getUserById(int id){
+        Uzytkownik u = null;
+        try {
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM uzytkownicy WHERE id = ?");
+            ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (!rs.next()) {
                 return null;
@@ -112,7 +133,25 @@ public class DbController {
         System.out.println("Dodano ankiete " + ankieta.getTytulAnkiety());
     }
 
+    public Ankieta getAnkietaByKod(String kod){
+        Ankieta a = new Ankieta();
+        try {
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM ankiety WHERE kod_ankiety = ?");
+            ps.setString(1, kod);
+            ResultSet rs = ps.executeQuery();
+            if (!rs.next()) {
+                return null;
+            } else {
+                String ankietaJson = rs.getString("obiekt_ankieta");
+                a = objectMapper.readValue(ankietaJson, a.getClass());
+            }
+        } catch (SQLException | IOException throwables) {
+            throwables.printStackTrace();
+        }
+        return a;
+    }
+
     private String toJson(Object object) throws JsonProcessingException {
-        return objectMapper.writeValueAsString(object);
+        return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(object);
     }
 }

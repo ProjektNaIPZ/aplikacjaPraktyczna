@@ -1,12 +1,13 @@
 package projektnaipz.aplikacjapraktyczna.db.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Ankieta {
     private String tytulAnkiety;
     private int autor;
     private String kodAnkiety;
-    private List<Pytanie> listaPytan;
+    private List<Pytanie> listaPytan = new ArrayList<>();
     private boolean czyOtwarta;
 
     public Ankieta(String tytulAnkiety, int autor, String kodAnkiety, List<Pytanie> listaPytan) {
@@ -17,6 +18,7 @@ public class Ankieta {
         this.czyOtwarta = true;
     }
 
+    public Ankieta(){}
 
     public String getTytulAnkiety() {
         return tytulAnkiety;
