@@ -17,6 +17,7 @@ import projektnaipz.aplikacjapraktyczna.db.model.Uzytkownik;
 import java.io.IOException;
 
 public class TakeFormController {
+
     static String kodAnkiety;
 
     @FXML
@@ -41,7 +42,9 @@ public class TakeFormController {
             Pytanie p = ankieta.getListaPytan().get(i);
             Label pyt = new Label(p.getTrescPytania());
             pyt.setStyle("-fx-font-weight: bold");
-            Label lpkt = new Label("Liczba punktów: " + p.getLiczbaPunktow());
+            HBox pktHbox = new HBox();
+            Label lpkt = new Label(p.getLiczbaPunktow().toString());
+            pktHbox.getChildren().addAll(new Label("Liczba punktów: "), lpkt);
 
             VBox odpBox = new VBox();
             odpBox.setPadding(new Insets(10, 0, 15, 10));
@@ -49,16 +52,15 @@ public class TakeFormController {
                 HBox hbox = new HBox();
                 hbox.setSpacing(15);
                 hbox.setPadding(new Insets(5, 0, 5, 10));
-                Button plusBtn = new Button("+");
-                Button minusBtn = new Button("-");
                 Label counter = new Label("0");
-                hbox.getChildren().addAll(new Label(p.getListaOdp().get(j)),counter,plusBtn,minusBtn);
+                PlusBtn btn1 = new PlusBtn(counter, lpkt);
+                MinusBtn btn2 = new MinusBtn(counter, lpkt);
+                hbox.getChildren().addAll(new Label(p.getListaOdp().get(j)),counter,btn1,btn2);
                 odpBox.getChildren().add(hbox);
             }
-            pytBox.getChildren().addAll(pyt, lpkt, odpBox);
+            pytBox.getChildren().addAll(pyt, pktHbox, odpBox);
             vbox.getChildren().add(pytBox);
         }
-
     }
 
     @FXML
@@ -69,6 +71,52 @@ public class TakeFormController {
         Stage stageTheLabelBelongs = (Stage) title.getScene().getWindow();
         stageTheLabelBelongs.setScene(scene);
         stageTheLabelBelongs.show();
+    }
+
+    static class PlusBtn extends Button {
+        private final Label lo;
+        private final Label lp;
+
+        public PlusBtn(Label licznikOdp, Label licznikPyt){
+            setText("+");
+            this.lo = licznikOdp;
+            this.lp = licznikPyt;
+            setOnAction(event -> click());
+        }
+
+        private void click(){
+            int pyt = Integer.parseInt(lp.getText());
+            if(pyt > 0){
+                int odp = Integer.parseInt(lo.getText());
+                pyt--;
+                odp++;
+                lp.setText(String.valueOf(pyt));
+                lo.setText(String.valueOf(odp));
+            }
+        }
+    }
+
+    static class MinusBtn extends Button {
+        private final Label lo;
+        private final Label lp;
+
+        public MinusBtn(Label licznikOdp, Label licznikPyt){
+            setText("-");
+            this.lo = licznikOdp;
+            this.lp = licznikPyt;
+            setOnAction(event -> click());
+        }
+
+        private void click(){
+            int odp = Integer.parseInt(lo.getText());
+            if(odp > 0){
+                int pyt = Integer.parseInt(lp.getText());
+                pyt++;
+                odp--;
+                lp.setText(String.valueOf(pyt));
+                lo.setText(String.valueOf(odp));
+            }
+        }
     }
 
     @FXML

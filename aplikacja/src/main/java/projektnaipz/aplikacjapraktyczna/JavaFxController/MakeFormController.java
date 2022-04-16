@@ -113,7 +113,7 @@ public class MakeFormController {
                 kodAnkiety,
                 listaObiektowPytanie);
 
-        App.db.addAnkietaToDb(ankieta);
+        App.db.addAnkieta(ankieta);
 
         // potwierdzenie wysłania ankiety
         welcomeText.setText("Ankieta wysłana poprawnie!");
