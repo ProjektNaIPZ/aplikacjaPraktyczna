@@ -13,7 +13,7 @@
     </padding>
     <Label fx:id="welcomeText" graphicTextGap="1.0" text="Wypełnij ankietę" />
     <Label fx:id="title" graphicTextGap="1.0" />
-    <ScrollPane id="scrollPane" fx:id="scrollPane" hbarPolicy="NEVER" prefHeight="430.0" prefWidth="760.0" vbarPolicy="ALWAYS">
+    <ScrollPane id="scrollPane" hbarPolicy="NEVER" prefHeight="430.0" prefWidth="760.0" vbarPolicy="ALWAYS">
         <content>
             <VBox fx:id="vbox" prefWidth="742.0" spacing="10.0" />
         </content>

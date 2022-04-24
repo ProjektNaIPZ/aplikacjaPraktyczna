@@ -7,11 +7,11 @@ import java.util.List;
 
 public class Pytanie {
     @JsonProperty("tresc_pytania")
-    public String trescPytania;
+    private String trescPytania;
     @JsonProperty("lista_odp")
-    public List<String> listaOdp = new ArrayList<>();
+    private List<String> listaOdp = new ArrayList<>();
     @JsonProperty("liczba_punktow")
-    public Integer liczbaPunktow;
+    private Integer liczbaPunktow;
 
     public Pytanie(String trescPytania, List<String> listaOdp, Integer liczbaPunktow) {
         this.trescPytania = trescPytania;

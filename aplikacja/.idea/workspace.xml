@@ -5,22 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a805926d-d0f0-41d6-b5db-4c7f8865c650" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/TakeFormController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/projektnaipz/aplikacjapraktyczna/giveCode-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/aplikacja.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/aplikacja.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_13_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_10_0_pr2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_13_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_10_0_pr2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_13_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_10_0_pr2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/MakeFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/MakeFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/TakeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/GiveCodeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/TakeFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/TakeFormController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/DbController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/DbController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/model/Ankieta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/model/Ankieta.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/model/Pytanie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/model/Pytanie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/model/Uzytkownik.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/model/Uzytkownik.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/projektnaipz/aplikacjapraktyczna/take-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/projektnaipz/aplikacjapraktyczna/take-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/projektnaipz/aplikacjapraktyczna/take-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projektnaipz/aplikacjapraktyczna/take-view.fxml" afterDir="false" />
     </list>
@@ -76,7 +66,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/projektnaipz/aplikacjapraktyczna" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../gity/JavaLearn/backend-JavaLearn" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">

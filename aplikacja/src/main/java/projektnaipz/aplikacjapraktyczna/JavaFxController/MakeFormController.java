@@ -83,16 +83,13 @@ public class MakeFormController {
 
     @FXML
     protected void onApplyButtonClick() throws IOException {
-
         // pobranie wartosci z pól odpowiedzi
         for(Node nodeIn: vbox.getChildren()){
             if(nodeIn instanceof TextField){
                 listaOdp.add(((TextField)nodeIn).getText());
             }
         }
-
         List<Pytanie> listaObiektowPytanie = new ArrayList<>();
-
         // tworzenie obiektow pytanie
         int zapisaneOdp = 0;
         int odpLimit;

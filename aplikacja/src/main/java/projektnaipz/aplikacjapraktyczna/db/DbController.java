@@ -3,6 +3,7 @@ package projektnaipz.aplikacjapraktyczna.db;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import projektnaipz.aplikacjapraktyczna.db.model.Ankieta;
+import projektnaipz.aplikacjapraktyczna.db.model.Odpowiedz;
 import projektnaipz.aplikacjapraktyczna.db.model.Uzytkownik;
 
 import java.io.IOException;
@@ -47,15 +48,14 @@ public class DbController {
                     "(id INT(11) NOT NULL AUTO_INCREMENT, " +
                     "id_ankiety INT NOT NULL, " +
                     "FOREIGN KEY (id_ankiety) REFERENCES ankiety(id), " +
-                    "id_autora INT NOT NULL, " +
-                    "FOREIGN KEY (id_autora) REFERENCES uzytkownicy(id), " +
+                    "id_ankietowanego INT NOT NULL, " +
+                    "FOREIGN KEY (id_ankietowanego) REFERENCES uzytkownicy(id), " +
                     "obiekt_odpowiedz json DEFAULT NULL, " +
                     "CONSTRAINT id PRIMARY KEY (id))");
 
 //            st.executeUpdate("DELETE FROM uzytkownicy");
 //            st.executeUpdate("DELETE FROM ankiety");
 //            st.executeUpdate("DELETE FROM odpowiedzi");
-
 //            st.executeUpdate("INSERT INTO uzytkownicy (login, haslo, admin) values ('admin', 'admin', '1')");
 
         } catch (SQLException e) {
@@ -116,7 +116,7 @@ public class DbController {
         return u;
     }
 
-    public void addAnkietaToDb(Ankieta ankieta) {
+    public void addAnkieta(Ankieta ankieta) {
         try {
             PreparedStatement ps = conn.prepareStatement(
                     "INSERT INTO ankiety (tytul_ankiety, id_autora, kod_ankiety, czy_otwarta, obiekt_ankieta) " +
@@ -149,6 +149,48 @@ public class DbController {
             throwables.printStackTrace();
         }
         return a;
+    }
+
+    public void addOdp(Odpowiedz odpowiedz) {
+        try {
+            PreparedStatement ps = conn.prepareStatement(
+                    "INSERT INTO odpowiedzi (id_ankiety, id_ankietowanego, obiekt_odpowiedz) " +
+                            "values (?,?,?)");
+            ps.setInt(1, odpowiedz.getIdAnkiety());
+            ps.setInt(2, odpowiedz.getIdAnkietowanego());
+            ps.setString(3, toJson(odpowiedz));
+            ps.executeUpdate();
+        } catch (SQLException | JsonProcessingException throwables) {
+            throwables.printStackTrace();
+        }
+        System.out.println("Dodano odpowiedz.");
+    }
+
+//    st.execute("CREATE TABLE IF NOT EXISTS odpowiedzi " +
+//            "(id INT(11) NOT NULL AUTO_INCREMENT, " +
+//            "id_ankiety INT NOT NULL, " +
+//            "FOREIGN KEY (id_ankiety) REFERENCES ankiety(id), " +
+//            "id_ankietowanego INT NOT NULL, " +
+//            "FOREIGN KEY (id_ankietowanego) REFERENCES uzytkownicy(id), " +
+//            "obiekt_odpowiedz json DEFAULT NULL, " +
+//            "CONSTRAINT id PRIMARY KEY (id))");
+
+    public boolean checkForAnswer(int idAnkietowanego, int idAnkiety) {
+        Ankieta a = new Ankieta();
+        try {
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM `odpowiedzi` WHERE id_ankietowanego = ? AND id_ankiety = ?");
+            ps.setInt(1, idAnkietowanego);
+            ps.setInt(2, idAnkiety);
+            ResultSet rs = ps.executeQuery();
+            if (!rs.next()) {
+                return false;
+            } else {
+                return true;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return false;
     }
 
     private String toJson(Object object) throws JsonProcessingException {
