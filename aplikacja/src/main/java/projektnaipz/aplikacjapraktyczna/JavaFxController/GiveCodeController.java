@@ -18,7 +18,7 @@ public class GiveCodeController {
     @FXML
     protected void onContinueButtonClick() throws IOException {
 
-        TakeFormController.kodAnkiety = kodAnkietyTextField.getText();
+        TakeFormController.kodAnkiety = Integer.parseInt(kodAnkietyTextField.getText());
 
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("take-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);

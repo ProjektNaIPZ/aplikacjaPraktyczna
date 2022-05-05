@@ -21,7 +21,8 @@ import java.util.List;
 
 public class TakeFormController {
 
-    static String kodAnkiety;
+    static int kodAnkiety;
+    static boolean otwarta;
 
     @FXML
     private Label welcomeText;
@@ -38,39 +39,47 @@ public class TakeFormController {
     @FXML
     public void initialize() {
         Ankieta ankieta = App.db.getAnkietaByKod(kodAnkiety);
+        otwarta = ankieta.getCzyOtwarta();
+
         title.setText(ankieta.getTytulAnkiety());
         title.setStyle("-fx-font-weight: bold");
         Uzytkownik autor = App.db.getUserById(ankieta.getAutor());
         madeBy.setText("Ankieta stworzona przez: " + autor.getLogin());
 
-        // stworzenie i dodanie elementow
-        for (int i = 0; i < ankieta.getListaPytan().size(); i++){
-            VBox pytBox = new VBox();
-            pytBox.setPadding(new Insets(0, 0, 0, 10));
-            Pytanie p = ankieta.getListaPytan().get(i);
-            Label pyt = new Label(p.getTrescPytania());
-            pyt.setStyle("-fx-font-weight: bold");
-            HBox pktHbox = new HBox();
-            Label lpkt = new Label(p.getLiczbaPunktow().toString());
-            pktHbox.getChildren().addAll(new Label("Liczba punktów: "), lpkt);
+        if(!otwarta){
+            Label ankietaZamknieta = new Label("Ankieta została zamknięta!");
+            ankietaZamknieta.setStyle("-fx-font-weight: bold;-fx-text-fill: red;");
+            vbox.getChildren().add(ankietaZamknieta);
+        } else {
+            // stworzenie i dodanie elementow
+            for (int i = 0; i < ankieta.getListaPytan().size(); i++) {
+                VBox pytBox = new VBox();
+                pytBox.setPadding(new Insets(0, 0, 0, 10));
+                Pytanie p = ankieta.getListaPytan().get(i);
+                Label pyt = new Label(p.getTrescPytania());
+                pyt.setStyle("-fx-font-weight: bold");
+                HBox pktHbox = new HBox();
+                Label lpkt = new Label(p.getLiczbaPunktow().toString());
+                pktHbox.getChildren().addAll(new Label("Liczba punktów: "), lpkt);
 
-            VBox odpBox = new VBox();
-            odpBox.setPadding(new Insets(10, 0, 15, 10));
-            for(int j = 0; j < p.getListaOdp().size(); j++) {
-                HBox hbox = new HBox();
-                hbox.setSpacing(15);
-                hbox.setPadding(new Insets(5, 0, 5, 10));
-                Label counter = new Label("0");
-                listaLicznikow.add(counter);
-                PlusBtn btn1 = new PlusBtn(counter, lpkt);
-                MinusBtn btn2 = new MinusBtn(counter, lpkt);
-                hbox.getChildren().addAll(new Label(p.getListaOdp().get(j)),counter,btn1,btn2);
-                odpBox.getChildren().add(hbox);
-                buttons.add(btn1);
-                buttons.add(btn2);
+                VBox odpBox = new VBox();
+                odpBox.setPadding(new Insets(10, 0, 15, 10));
+                for (int j = 0; j < p.getListaOdp().size(); j++) {
+                    HBox hbox = new HBox();
+                    hbox.setSpacing(15);
+                    hbox.setPadding(new Insets(5, 0, 5, 10));
+                    Label counter = new Label("0");
+                    listaLicznikow.add(counter);
+                    PlusBtn btn1 = new PlusBtn(counter, lpkt);
+                    MinusBtn btn2 = new MinusBtn(counter, lpkt);
+                    hbox.getChildren().addAll(new Label(p.getListaOdp().get(j)), counter, btn1, btn2);
+                    odpBox.getChildren().add(hbox);
+                    buttons.add(btn1);
+                    buttons.add(btn2);
+                }
+                pytBox.getChildren().addAll(pyt, pktHbox, odpBox);
+                vbox.getChildren().add(pytBox);
             }
-            pytBox.getChildren().addAll(pyt, pktHbox, odpBox);
-            vbox.getChildren().add(pytBox);
         }
     }
 
@@ -143,24 +152,28 @@ public class TakeFormController {
 
         Odpowiedz odp = new Odpowiedz();
         odp.setIdAnkietowanego(App.zalogowany.getId());
-        odp.setIdAnkiety(Integer.parseInt(kodAnkiety));
+        odp.setKodAnkiety(kodAnkiety);
         odp.setListaPkt(listaPkt);
 
-        boolean flag = App.db.checkForAnswer(odp.getIdAnkietowanego(), odp.getIdAnkiety());
+        boolean flag = App.db.checkForAnswer(odp.getIdAnkietowanego(), odp.getKodAnkiety());
 
         if (flag){
             welcomeText.setText("Już udzieliłeś odpowiedzi do tej ankiety!");
-            return;
+            welcomeText.setStyle("-fx-text-fill: red;");
         }
+        else if(!otwarta) {
+            welcomeText.setText("Ankieta jest zamknięta!");
+            welcomeText.setStyle("-fx-text-fill: red;");
+        } else {
+            App.db.addOdp(odp);
+            welcomeText.setText("Odpowiedź została wysłana!");
 
-        App.db.addOdp(odp);
-        welcomeText.setText("Odpowiedź została wysłana!");
-
-        // powrót do głównego menu
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("main-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
-        Stage stageTheLabelBelongs = (Stage) welcomeText.getScene().getWindow();
-        stageTheLabelBelongs.setScene(scene);
-        stageTheLabelBelongs.show();
+            // powrót do głównego menu
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("main-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+            Stage stageTheLabelBelongs = (Stage) welcomeText.getScene().getWindow();
+            stageTheLabelBelongs.setScene(scene);
+            stageTheLabelBelongs.show();
+        }
     }
 }

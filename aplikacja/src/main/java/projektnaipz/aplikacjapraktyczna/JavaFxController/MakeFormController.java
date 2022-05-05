@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MakeFormController {
+
     @FXML
     public TextField title;
     @FXML
@@ -105,9 +106,12 @@ public class MakeFormController {
 
         String kodAnkiety = Integer.toString(getRandomNumber(100000, 999999));
 
-        Ankieta ankieta = new Ankieta(title.getText(),
+//        Ankieta ankieta = new Ankieta(Integer.parseInt(title.getText()),
+//                App.zalogowany.getId(),
+//                listaObiektowPytanie);
+        Ankieta ankieta = new Ankieta(Integer.parseInt(kodAnkiety),
+                title.getText(),
                 App.zalogowany.getId(),
-                kodAnkiety,
                 listaObiektowPytanie);
 
         App.db.addAnkieta(ankieta);

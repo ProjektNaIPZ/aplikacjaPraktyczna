@@ -6,12 +6,12 @@ import java.util.List;
 public class Odpowiedz {
 
     private int idAnkietowanego;
-    private int idAnkiety;
+    private int kodAnkiety;
     private List<Integer> listaPkt = new ArrayList<>();
 
     public Odpowiedz(int idAnkietowanego, int idAnkiety, List<Integer> listaPkt) {
         this.idAnkietowanego = idAnkietowanego;
-        this.idAnkiety = idAnkiety;
+        this.kodAnkiety = idAnkiety;
         this.listaPkt = listaPkt;
     }
 
@@ -31,11 +31,11 @@ public class Odpowiedz {
         this.idAnkietowanego = idAnkietowanego;
     }
 
-    public int getIdAnkiety() {
-        return idAnkiety;
+    public int getKodAnkiety() {
+        return kodAnkiety;
     }
 
-    public void setIdAnkiety(int idAnkiety) {
-        this.idAnkiety = idAnkiety;
+    public void setKodAnkiety(int kodAnkiety) {
+        this.kodAnkiety = kodAnkiety;
     }
 }

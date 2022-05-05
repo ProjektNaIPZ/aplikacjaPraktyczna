@@ -8,6 +8,8 @@ import projektnaipz.aplikacjapraktyczna.db.model.Uzytkownik;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DbController {
 
@@ -35,19 +37,18 @@ public class DbController {
                     "CONSTRAINT id PRIMARY KEY (id))");
 
             st.execute("CREATE TABLE IF NOT EXISTS ankiety " +
-                    "(id INT(11) NOT NULL AUTO_INCREMENT, " +
+                    "(kod_ankiety INT(11) NOT NULL, " +
                     "tytul_ankiety VARCHAR(255) NOT NULL, " +
                     "id_autora INT NOT NULL, " +
                     "FOREIGN KEY (id_autora) REFERENCES uzytkownicy(id), " +
-                    "kod_ankiety VARCHAR(255) NOT NULL, " +
                     "czy_otwarta INT(1) NOT NULL, " +
                     "obiekt_ankieta json DEFAULT NULL, " +
-                    "CONSTRAINT id PRIMARY KEY (id))");
+                    "CONSTRAINT kod_ankiety PRIMARY KEY (kod_ankiety))");
 
             st.execute("CREATE TABLE IF NOT EXISTS odpowiedzi " +
                     "(id INT(11) NOT NULL AUTO_INCREMENT, " +
-                    "id_ankiety INT NOT NULL, " +
-                    "FOREIGN KEY (id_ankiety) REFERENCES ankiety(id), " +
+                    "kod_ankiety INT NOT NULL, " +
+                    "FOREIGN KEY (kod_ankiety) REFERENCES ankiety(kod_ankiety), " +
                     "id_ankietowanego INT NOT NULL, " +
                     "FOREIGN KEY (id_ankietowanego) REFERENCES uzytkownicy(id), " +
                     "obiekt_odpowiedz json DEFAULT NULL, " +
@@ -119,11 +120,11 @@ public class DbController {
     public void addAnkieta(Ankieta ankieta) {
         try {
             PreparedStatement ps = conn.prepareStatement(
-                    "INSERT INTO ankiety (tytul_ankiety, id_autora, kod_ankiety, czy_otwarta, obiekt_ankieta) " +
+                    "INSERT INTO ankiety (kod_ankiety, tytul_ankiety, id_autora, czy_otwarta, obiekt_ankieta) " +
                             "values (?,?,?,?,?)");
-            ps.setString(1, ankieta.getTytulAnkiety());
-            ps.setInt(2, ankieta.getAutor());
-            ps.setString(3, ankieta.getKodAnkiety());
+            ps.setInt(1, ankieta.getKodAnkiety());
+            ps.setString(2, ankieta.getTytulAnkiety());
+            ps.setInt(3, ankieta.getAutor());
             ps.setBoolean(4, ankieta.getCzyOtwarta());
             ps.setString(5, toJson(ankieta));
             ps.executeUpdate();
@@ -133,11 +134,11 @@ public class DbController {
         System.out.println("Dodano ankiete " + ankieta.getTytulAnkiety());
     }
 
-    public Ankieta getAnkietaByKod(String kod){
+    public Ankieta getAnkietaByKod(int kod){
         Ankieta a = new Ankieta();
         try {
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM ankiety WHERE kod_ankiety = ?");
-            ps.setString(1, kod);
+            ps.setInt(1, kod);
             ResultSet rs = ps.executeQuery();
             if (!rs.next()) {
                 return null;
@@ -154,9 +155,9 @@ public class DbController {
     public void addOdp(Odpowiedz odpowiedz) {
         try {
             PreparedStatement ps = conn.prepareStatement(
-                    "INSERT INTO odpowiedzi (id_ankiety, id_ankietowanego, obiekt_odpowiedz) " +
+                    "INSERT INTO odpowiedzi (kod_ankiety, id_ankietowanego, obiekt_odpowiedz) " +
                             "values (?,?,?)");
-            ps.setInt(1, odpowiedz.getIdAnkiety());
+            ps.setInt(1, odpowiedz.getKodAnkiety());
             ps.setInt(2, odpowiedz.getIdAnkietowanego());
             ps.setString(3, toJson(odpowiedz));
             ps.executeUpdate();
@@ -166,31 +167,75 @@ public class DbController {
         System.out.println("Dodano odpowiedz.");
     }
 
-//    st.execute("CREATE TABLE IF NOT EXISTS odpowiedzi " +
-//            "(id INT(11) NOT NULL AUTO_INCREMENT, " +
-//            "id_ankiety INT NOT NULL, " +
-//            "FOREIGN KEY (id_ankiety) REFERENCES ankiety(id), " +
-//            "id_ankietowanego INT NOT NULL, " +
-//            "FOREIGN KEY (id_ankietowanego) REFERENCES uzytkownicy(id), " +
-//            "obiekt_odpowiedz json DEFAULT NULL, " +
-//            "CONSTRAINT id PRIMARY KEY (id))");
-
-    public boolean checkForAnswer(int idAnkietowanego, int idAnkiety) {
+    public boolean checkForAnswer(int idAnkietowanego, int kodAnkiety) {
         Ankieta a = new Ankieta();
         try {
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM `odpowiedzi` WHERE id_ankietowanego = ? AND id_ankiety = ?");
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM `odpowiedzi` WHERE id_ankietowanego = ? AND kod_ankiety = ?");
             ps.setInt(1, idAnkietowanego);
-            ps.setInt(2, idAnkiety);
+            ps.setInt(2, kodAnkiety);
             ResultSet rs = ps.executeQuery();
-            if (!rs.next()) {
-                return false;
-            } else {
-                return true;
-            }
+            return rs.next();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         return false;
+    }
+
+    public List<Ankieta> getAnkietyByUser(int idAutora) {
+        List<Ankieta> lista = new ArrayList<>();
+        try {
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM `ankiety` WHERE id_autora = ?");
+            ps.setInt(1, idAutora);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                String ankietaJson = rs.getString("obiekt_ankieta");
+                Ankieta a = new Ankieta();
+                a = objectMapper.readValue(ankietaJson, a.getClass());
+                lista.add(a);
+            }
+        } catch (SQLException | IOException throwables) {
+            throwables.printStackTrace();
+        }
+        return lista;
+    }
+
+    public void flipAccessByKodAnkiety(int kodAnkiety){
+        Ankieta a = new Ankieta();
+        try {
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM ankiety WHERE kod_ankiety = ?");
+            ps.setInt(1, kodAnkiety);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                String ankietaJson = rs.getString("obiekt_ankieta");
+                a = objectMapper.readValue(ankietaJson, a.getClass());
+                a.setCzyOtwarta(!a.getCzyOtwarta());
+                PreparedStatement upd = conn.prepareStatement("update ankiety set czy_otwarta = ?, obiekt_ankieta = ? where kod_ankiety = ?");
+                upd.setBoolean(1, a.getCzyOtwarta());
+                upd.setString(2, toJson(a));
+                upd.setInt(3, kodAnkiety);
+                upd.executeUpdate();
+            }
+        } catch (SQLException | IOException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    public List<Odpowiedz> getOdpByKodAnkiety(int kodAnkiety) {
+        List<Odpowiedz> lista = new ArrayList<>();
+        try {
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM `odpowiedzi` WHERE kod_ankiety = ?");
+            ps.setInt(1, kodAnkiety);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                String odpowiedzJson = rs.getString("obiekt_odpowiedz");
+                Odpowiedz odp = new Odpowiedz();
+                odp = objectMapper.readValue(odpowiedzJson, odp.getClass());
+                lista.add(odp);
+            }
+        } catch (SQLException | IOException throwables) {
+            throwables.printStackTrace();
+        }
+        return lista;
     }
 
     private String toJson(Object object) throws JsonProcessingException {

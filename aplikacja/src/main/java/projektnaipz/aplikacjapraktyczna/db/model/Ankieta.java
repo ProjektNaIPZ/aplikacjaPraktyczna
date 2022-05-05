@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ankieta {
+    private int kodAnkiety;
     private String tytulAnkiety;
     private int autor;
-    private String kodAnkiety;
     private List<Pytanie> listaPytan = new ArrayList<>();
     private boolean czyOtwarta;
 
-    public Ankieta(String tytulAnkiety, int autor, String kodAnkiety, List<Pytanie> listaPytan) {
+    public Ankieta(int kodAnkiety, String tytulAnkiety, int autor, List<Pytanie> listaPytan) {
+        this.kodAnkiety = kodAnkiety;
         this.tytulAnkiety = tytulAnkiety;
         this.autor = autor;
-        this.kodAnkiety = kodAnkiety;
         this.listaPytan = listaPytan;
         this.czyOtwarta = true;
     }
@@ -36,14 +36,6 @@ public class Ankieta {
         this.autor = autor;
     }
 
-    public String getKodAnkiety() {
-        return kodAnkiety;
-    }
-
-    public void setKodAnkiety(String kodAnkiety) {
-        this.kodAnkiety = kodAnkiety;
-    }
-
     public List<Pytanie> getListaPytan() {
         return listaPytan;
     }
@@ -58,5 +50,13 @@ public class Ankieta {
 
     public void setCzyOtwarta(boolean czyOtwarta) {
         this.czyOtwarta = czyOtwarta;
+    }
+
+    public int getKodAnkiety() {
+        return kodAnkiety;
+    }
+
+    public void setKodAnkiety(int kodAnkiety) {
+        this.kodAnkiety = kodAnkiety;
     }
 }
