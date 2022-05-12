@@ -65,6 +65,7 @@ public class ViewUserForm {
             pytBox.getChildren().addAll(pyt, pktHbox, odpBox);
             vbox.getChildren().add(pytBox);
         }
+
         // reszta danych ankiety
         Label kod = new Label("Kod ankiety: " + ankieta.getKodAnkiety());
         czyOtwarta = new Label("Czy otwarta: " + ankieta.getCzyOtwarta());
@@ -79,20 +80,22 @@ public class ViewUserForm {
         }
         vbox.getChildren().addAll(kod, udzielone, czyOtwarta, otwartaBtn);
 
-        // liczenie głosów
-        for(int i = 0; i < odpowiedzi.size(); i++){
-            List<Integer> pkt = odpowiedzi.get(i).getListaPkt();
-            if (i == 0)
-                suma.addAll(pkt);
-            else {
-                for(int j = 0; j < pkt.size(); j++){
-                    suma.set(j, suma.get(j) + pkt.get(j));
+        if(!odpowiedzi.isEmpty()){
+            // liczenie głosów
+            for(int i = 0; i < odpowiedzi.size(); i++){
+                List<Integer> pkt = odpowiedzi.get(i).getListaPkt();
+                if (i == 0)
+                    suma.addAll(pkt);
+                else {
+                    for(int j = 0; j < pkt.size(); j++){
+                        suma.set(j, suma.get(j) + pkt.get(j));
+                    }
                 }
             }
-        }
-        // zapisanie wyników
-        for(int i = 0; i < listaLicznikow.size(); i++){
-            listaLicznikow.get(i).setText(String.valueOf(suma.get(i)) + "pkt");
+            // zapisanie wyników
+            for(int i = 0; i < listaLicznikow.size(); i++){
+                listaLicznikow.get(i).setText(String.valueOf(suma.get(i)) + "pkt");
+            }
         }
     }
 

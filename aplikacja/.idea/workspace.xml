@@ -5,18 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a805926d-d0f0-41d6-b5db-4c7f8865c650" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/ViewUserForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/projektnaipz/aplikacjapraktyczna/viewUserForm.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/GiveCodeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/GiveCodeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/MakeFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/MakeFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/TakeFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/TakeFormController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/UserFormsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/UserFormsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/ViewUserForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/ViewUserForm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/DbController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/DbController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/model/Ankieta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/model/Ankieta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/model/Odpowiedz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/model/Odpowiedz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/projektnaipz/aplikacjapraktyczna/userForms-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/projektnaipz/aplikacjapraktyczna/userForms-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/projektnaipz/aplikacjapraktyczna/userForms-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/projektnaipz/aplikacjapraktyczna/userForms-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

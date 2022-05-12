@@ -104,7 +104,7 @@ public class MakeFormController {
             listaObiektowPytanie.add(p);
         }
 
-        String kodAnkiety = Integer.toString(getRandomNumber(100000, 999999));
+        String kodAnkiety = Integer.toString(getRandomNumber(1000, 9999));
 
 //        Ankieta ankieta = new Ankieta(Integer.parseInt(title.getText()),
 //                App.zalogowany.getId(),

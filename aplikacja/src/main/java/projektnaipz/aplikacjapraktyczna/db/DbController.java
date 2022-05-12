@@ -20,19 +20,20 @@ public class DbController {
     public DbController(){
         try {
             conn = DriverManager.getConnection("jdbc:mysql://localhost/aplprakt", "root", "roma");
-            System.out.println("Połączono!");
+            System.out.println("Połączono z db!");
 
             objectMapper = new ObjectMapper();
             st = conn.createStatement();
 
-//            st.executeUpdate("DROP TABLE odpowiedzi");
-//            st.executeUpdate("DROP TABLE ankiety");
-//            st.executeUpdate("DROP TABLE uzytkownicy");
+            st.executeUpdate("DROP TABLE odpowiedzi");
+            st.executeUpdate("DROP TABLE ankiety");
+            st.executeUpdate("DROP TABLE uzytkownicy");
 
             st.execute("CREATE TABLE IF NOT EXISTS uzytkownicy " +
                     "(id INT(11) NOT NULL AUTO_INCREMENT, " +
                     "login VARCHAR(30) NOT NULL, " +
                     "haslo VARCHAR(255) NOT NULL, " +
+                    "obiekt_uzytkownik json DEFAULT NULL, " +
                     "admin INT(1), " +
                     "CONSTRAINT id PRIMARY KEY (id))");
 
@@ -75,6 +76,26 @@ public class DbController {
         throwables.printStackTrace();
         }
         System.out.println("Zarejestrowano " + login + " " + haslo);
+
+        //aktualizacja rekordu o obiekt_uzytkownik
+        Uzytkownik u = null;
+        try {
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM uzytkownicy WHERE login = ?");
+            ps.setString(1, login);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                u = new Uzytkownik(rs.getInt("id"),
+                        rs.getString("login"),
+                        rs.getString("haslo"),
+                        rs.getBoolean("admin"));
+                PreparedStatement upd = conn.prepareStatement("update uzytkownicy set obiekt_uzytkownik = ? where login = ?");
+                upd.setString(1, toJson(u));
+                upd.setString(2, login);
+                upd.executeUpdate();
+            }
+        } catch (SQLException | IOException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     public Uzytkownik getUserByLogin(String login){
