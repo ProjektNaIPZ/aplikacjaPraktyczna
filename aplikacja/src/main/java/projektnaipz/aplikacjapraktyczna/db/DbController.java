@@ -25,9 +25,9 @@ public class DbController {
             objectMapper = new ObjectMapper();
             st = conn.createStatement();
 
-            st.executeUpdate("DROP TABLE odpowiedzi");
-            st.executeUpdate("DROP TABLE ankiety");
-            st.executeUpdate("DROP TABLE uzytkownicy");
+//            st.executeUpdate("DROP TABLE odpowiedzi");
+//            st.executeUpdate("DROP TABLE ankiety");
+//            st.executeUpdate("DROP TABLE uzytkownicy");
 
             st.execute("CREATE TABLE IF NOT EXISTS uzytkownicy " +
                     "(id INT(11) NOT NULL AUTO_INCREMENT, " +
@@ -207,6 +207,23 @@ public class DbController {
         try {
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM `ankiety` WHERE id_autora = ?");
             ps.setInt(1, idAutora);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                String ankietaJson = rs.getString("obiekt_ankieta");
+                Ankieta a = new Ankieta();
+                a = objectMapper.readValue(ankietaJson, a.getClass());
+                lista.add(a);
+            }
+        } catch (SQLException | IOException throwables) {
+            throwables.printStackTrace();
+        }
+        return lista;
+    }
+
+    public List<Ankieta> getAllAnkiety() {
+        List<Ankieta> lista = new ArrayList<>();
+        try {
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM `ankiety`");
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
                 String ankietaJson = rs.getString("obiekt_ankieta");

@@ -3,6 +3,7 @@ package projektnaipz.aplikacjapraktyczna.JavaFxController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import projektnaipz.aplikacjapraktyczna.App;
@@ -13,6 +14,24 @@ public class MainController {
 
     @FXML
     private Label welcomeText;
+
+    @FXML
+    private Button uzytkownicyBtn;
+
+    @FXML
+    private Button ankietyBtn;
+
+    @FXML
+    public void initialize() {
+        if(App.zalogowany.isAdmin()){
+            welcomeText.setText("Główne menu ADMINA");
+
+            uzytkownicyBtn.setOpacity(1);
+            uzytkownicyBtn.setDisable(false);
+
+            ankietyBtn.setText("Ankiety");
+        }
+    }
 
     @FXML
     protected void onMakeFormButtonClick() throws IOException {

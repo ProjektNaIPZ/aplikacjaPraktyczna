@@ -24,6 +24,7 @@ public class ViewUserForm {
     private List<Label> listaLicznikow = new ArrayList<>();
     private List<Integer> suma = new ArrayList<>();
     private Label czyOtwarta;
+    private Label warningLabel;
     private Button otwartaBtn;
 
     @FXML
@@ -76,9 +77,16 @@ public class ViewUserForm {
         if(ankieta.getCzyOtwarta()){
             otwartaBtn.setText("Zamknij ankietę");
         } else {
-            otwartaBtn.setText("Otwórz ankietę");
+            if(App.zalogowany.isAdmin()) {
+                otwartaBtn.setText("Otwórz ankietę");
+            } else {
+                otwartaBtn.setText("Ankieta została zamknięta");
+                otwartaBtn.setDisable(true);
+            }
         }
-        vbox.getChildren().addAll(kod, udzielone, czyOtwarta, otwartaBtn);
+        warningLabel = new Label("Otwarcie ankiety będzie później niemożliwe!");
+        warningLabel.setOpacity(0);
+        vbox.getChildren().addAll(kod, udzielone, czyOtwarta, otwartaBtn, warningLabel);
 
         if(!odpowiedzi.isEmpty()){
             // liczenie głosów
@@ -106,7 +114,12 @@ public class ViewUserForm {
         if(ankieta.getCzyOtwarta()){
             otwartaBtn.setText("Zamknij ankietę");
         } else {
-            otwartaBtn.setText("Otwórz ankietę");
+            if(App.zalogowany.isAdmin()) {
+                otwartaBtn.setText("Otwórz ankietę");
+            } else {
+                otwartaBtn.setText("Cofnij");
+                warningLabel.setOpacity(1);
+            }
         }
     }
 

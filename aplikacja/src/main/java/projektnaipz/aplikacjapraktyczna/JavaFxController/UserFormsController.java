@@ -22,7 +22,11 @@ public class UserFormsController {
 
     @FXML
     public void initialize() {
-       ankiety = App.db.getAnkietyByUser(App.zalogowany.getId());
+        if(App.zalogowany.isAdmin()){
+            ankiety = App.db.getAllAnkiety();
+        } else {
+            ankiety = App.db.getAnkietyByUser(App.zalogowany.getId());
+        }
        if (ankiety == null ){
            vbox.getChildren().add(new Label("Nie stworzyłeś żadnych ankiet."));
        } else {
