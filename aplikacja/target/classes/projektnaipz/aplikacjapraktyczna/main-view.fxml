@@ -37,7 +37,7 @@
          <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onTakeButtonClick" onMouseClicked="#onTakeButtonClick" prefHeight="30.0" prefWidth="250.0" text="Weź udział w istniejącej ankiecie" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          <Button fx:id="ankietyBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onYourFormsButtonClick" onMouseClicked="#onYourFormsButtonClick" prefHeight="30.0" prefWidth="250.0" text="Twoje ankiety" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          <Button alignment="CENTER" contentDisplay="CENTER" onAction="#onLogoutButtonClick" onMouseClicked="#onLogoutButtonClick" prefHeight="30.0" prefWidth="100.0" text="Wyloguj" GridPane.rowIndex="4" />
-         <Button fx:id="uzytkownicyBtn" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#onYourFormsButtonClick" onMouseClicked="#onYourFormsButtonClick" opacity="0.0" prefHeight="30.0" prefWidth="250.0" text="Użytkownicy" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         <Button fx:id="uzytkownicyBtn" alignment="CENTER" contentDisplay="CENTER" disable="true" mnemonicParsing="false" onAction="#onUsersButtonClick" onMouseClicked="#onUsersButtonClick" opacity="0.0" prefHeight="30.0" prefWidth="250.0" text="Użytkownicy" GridPane.columnIndex="1" GridPane.rowIndex="3" />
       </children>
    </GridPane>
 </VBox>

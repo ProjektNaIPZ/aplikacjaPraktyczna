@@ -52,6 +52,12 @@ public class MainController {
     }
 
     @FXML
+    protected void onUsersButtonClick() throws IOException {
+        // przejście do ekranu tworzenia ankiety
+        loadWindow("userList-view.fxml");
+    }
+
+    @FXML
     protected void onLogoutButtonClick() throws IOException {
         // powrót do ekranu logowania
         App.zalogowany = null;

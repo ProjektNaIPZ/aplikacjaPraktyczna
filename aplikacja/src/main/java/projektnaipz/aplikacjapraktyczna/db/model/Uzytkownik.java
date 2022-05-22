@@ -1,6 +1,7 @@
 package projektnaipz.aplikacjapraktyczna.db.model;
 
 public class Uzytkownik {
+
     private int id;
     private String login;
     private String haslo;
@@ -29,5 +30,21 @@ public class Uzytkownik {
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public void setHaslo(String haslo) {
+        this.haslo = haslo;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 }

@@ -237,6 +237,23 @@ public class DbController {
         return lista;
     }
 
+    public List<Uzytkownik> getAllUsers() {
+        List<Uzytkownik> lista = new ArrayList<>();
+        try {
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM `uzytkownicy`");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String uzytkownikJson = rs.getString("obiekt_uzytkownik");
+                Uzytkownik a = new Uzytkownik();
+                a = objectMapper.readValue(uzytkownikJson, a.getClass());
+                lista.add(a);
+            }
+        } catch (SQLException | IOException throwables) {
+            throwables.printStackTrace();
+        }
+        return lista;
+    }
+
     public void flipAccessByKodAnkiety(int kodAnkiety){
         Ankieta a = new Ankieta();
         try {

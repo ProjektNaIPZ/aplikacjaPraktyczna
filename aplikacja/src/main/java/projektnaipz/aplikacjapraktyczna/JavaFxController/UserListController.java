@@ -8,60 +8,58 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import projektnaipz.aplikacjapraktyczna.App;
-import projektnaipz.aplikacjapraktyczna.db.model.Ankieta;
+import projektnaipz.aplikacjapraktyczna.db.model.Uzytkownik;
 
 import java.io.IOException;
 import java.util.List;
 
-public class UserFormsController {
+public class UserListController {
 
-    List<Ankieta> ankiety;
+    List<Uzytkownik> uzytkownicy;
 
     @FXML
     VBox vbox;
 
     @FXML
     public void initialize() {
-        if(App.zalogowany.isAdmin()){
-            ankiety = App.db.getAllAnkiety();
+
+        uzytkownicy = App.db.getAllUsers();
+
+        if (uzytkownicy == null) {
+            vbox.getChildren().add(new Label("Brak użytkownikow w bazie danych."));
         } else {
-            ankiety = App.db.getAnkietyByUser(App.zalogowany.getId());
+            for (Uzytkownik u : uzytkownicy) {
+                PrzyciskUzytkownika userBtn = new PrzyciskUzytkownika(u);
+                vbox.getChildren().add(userBtn);
+            }
         }
-       if (ankiety == null ){
-           vbox.getChildren().add(new Label("Nie stworzyłeś żadnych ankiet."));
-       } else {
-           for(Ankieta a : ankiety){
-               PrzyciskAnkiety ankietaBtn = new PrzyciskAnkiety(a);
-               vbox.getChildren().add(ankietaBtn);
-           }
-       }
     }
 
     @FXML
     protected void onBackButtonClick() throws IOException {
         // powrót do głównego menu
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("main-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("userForms-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
         Stage stageTheLabelBelongs = (Stage) vbox.getScene().getWindow();
         stageTheLabelBelongs.setScene(scene);
         stageTheLabelBelongs.show();
     }
 
-    class PrzyciskAnkiety extends Button {
-        Ankieta ankieta;
+    class PrzyciskUzytkownika extends Button {
+        Uzytkownik uzytkownik;
 
-        public PrzyciskAnkiety(Ankieta a) {
-            this.setText(a.getTytulAnkiety());
+        public PrzyciskUzytkownika(Uzytkownik u) {
+            this.setText(u.getLogin());
             this.setMinSize(200, 100);
             this.setMaxHeight(100);
-            this.ankieta = a;
+            this.uzytkownik = u;
             this.setOnAction(event -> click());
         }
 
         private void click(){
-            ViewUserForm.ankieta = ankieta;
+            ViewUser.uzytkownik = uzytkownik;
 
-            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("viewUserForm.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("viewUser.fxml"));
             Scene scene = null;
             try {
                 scene = new Scene(fxmlLoader.load(), 800, 600);
