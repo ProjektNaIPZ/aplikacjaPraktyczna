@@ -293,6 +293,41 @@ public class DbController {
         return lista;
     }
 
+    public String getJsonAnkietaByKodAnkiety(Integer kodAnkiety){
+        String ankietaJson = "";
+        try {
+            PreparedStatement ps = conn.prepareStatement("SELECT obiekt_ankieta FROM ankiety WHERE kod_ankiety = ?");
+            ps.setInt(1, kodAnkiety);
+            ResultSet rs = ps.executeQuery();
+            if (!rs.next()) {
+                return null;
+            } else {
+                ankietaJson = rs.getString("obiekt_ankieta");
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return ankietaJson;
+    }
+
+    public String getJsonOdpByKodAnkietyIdAnkietowanego(Integer kodAnkiety, Integer idAnkietowanego){
+        String odpJson = "";
+        try {
+            PreparedStatement ps = conn.prepareStatement("SELECT obiekt_odpowiedz FROM odpowiedzi WHERE kod_ankiety = ? AND id_ankietowanego = ?");
+            ps.setInt(1, kodAnkiety);
+            ps.setInt(2, idAnkietowanego);
+            ResultSet rs = ps.executeQuery();
+            if (!rs.next()) {
+                return null;
+            } else {
+                odpJson = rs.getString("obiekt_odpowiedz");
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return odpJson;
+    }
+
     private String toJson(Object object) throws JsonProcessingException {
         return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(object);
     }

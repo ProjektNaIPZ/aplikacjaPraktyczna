@@ -5,17 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a805926d-d0f0-41d6-b5db-4c7f8865c650" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/UserListController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/ViewUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/projektnaipz/aplikacjapraktyczna/userList-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/projektnaipz/aplikacjapraktyczna/viewUser.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/UserFormsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/JavaFxController/UserFormsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/DbController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/DbController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/model/Uzytkownik.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/projektnaipz/aplikacjapraktyczna/db/model/Uzytkownik.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/projektnaipz/aplikacjapraktyczna/main-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/projektnaipz/aplikacjapraktyczna/main-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/projektnaipz/aplikacjapraktyczna/viewUserForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/projektnaipz/aplikacjapraktyczna/viewUserForm.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
