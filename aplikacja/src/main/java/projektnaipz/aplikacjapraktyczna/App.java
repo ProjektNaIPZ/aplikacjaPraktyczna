@@ -28,6 +28,7 @@ public class App extends Application {
 
     public static void main(String[] args) throws IOException, JsonParseException, JsonMappingException {
         db = new DbController();
+        System.out.println(db.getJsonUserById(3));
         launch();
     }
 }

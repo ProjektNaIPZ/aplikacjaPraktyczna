@@ -328,6 +328,23 @@ public class DbController {
         return odpJson;
     }
 
+    public String getJsonUserById(Integer id){
+        String uzytkownikJson = "";
+        try {
+            PreparedStatement ps = conn.prepareStatement("SELECT obiekt_uzytkownik FROM uzytkownicy WHERE id = ?");
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (!rs.next()) {
+                return null;
+            } else {
+                uzytkownikJson = rs.getString("obiekt_uzytkownik");
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return uzytkownikJson;
+    }
+
     private String toJson(Object object) throws JsonProcessingException {
         return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(object);
     }
