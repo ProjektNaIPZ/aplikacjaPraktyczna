@@ -18,6 +18,7 @@ import projektnaipz.aplikacjapraktyczna.db.model.Uzytkownik;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class TakeFormController {
 
@@ -165,6 +166,11 @@ public class TakeFormController {
             welcomeText.setText("Ankieta jest zamknięta!");
             welcomeText.setStyle("-fx-text-fill: red;");
         } else {
+            try {
+                TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             App.db.addOdp(odp);
             welcomeText.setText("Odpowiedź została wysłana!");
 

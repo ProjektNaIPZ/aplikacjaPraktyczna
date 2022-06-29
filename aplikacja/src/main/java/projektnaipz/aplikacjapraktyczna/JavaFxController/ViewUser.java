@@ -23,6 +23,13 @@ public class ViewUser {
     @FXML
     public void initialize() {
         title.setText(uzytkownik.getLogin());
+        title.setStyle("-fx-font-weight: bold");
+        Label a = new Label("Czy jest adminem:");
+        Label admin = new Label(String.valueOf(uzytkownik.isAdmin()));
+        admin.setStyle("-fx-font-weight: bold");
+
+        vbox.getChildren().addAll(a, admin);
+
     }
 
     @FXML
