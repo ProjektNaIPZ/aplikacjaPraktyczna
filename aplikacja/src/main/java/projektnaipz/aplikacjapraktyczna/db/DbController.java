@@ -19,15 +19,16 @@ public class DbController {
 
     public DbController(){
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/aplprakt", "root", "roma");
-            System.out.println("Połączono z db!");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/", "root", "3V`+&Mh56ke]");
 
             objectMapper = new ObjectMapper();
             st = conn.createStatement();
 
-//            st.executeUpdate("DROP TABLE odpowiedzi");
-//            st.executeUpdate("DROP TABLE ankiety");
-//            st.executeUpdate("DROP TABLE uzytkownicy");
+            st.execute("CREATE DATABASE IF NOT EXISTS aplprakt");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/aplprakt", "root", "3V`+&Mh56ke]");
+            objectMapper = new ObjectMapper();
+            st = conn.createStatement();
+            System.out.println("Połączono z db!");
 
             st.execute("CREATE TABLE IF NOT EXISTS uzytkownicy " +
                     "(id INT(11) NOT NULL AUTO_INCREMENT, " +
@@ -55,10 +56,8 @@ public class DbController {
                     "obiekt_odpowiedz json DEFAULT NULL, " +
                     "CONSTRAINT id PRIMARY KEY (id))");
 
-//            st.executeUpdate("DELETE FROM uzytkownicy");
-//            st.executeUpdate("DELETE FROM ankiety");
-//            st.executeUpdate("DELETE FROM odpowiedzi");
-//            st.executeUpdate("INSERT INTO uzytkownicy (login, haslo, admin) values ('admin', 'admin', '1')");
+            st.executeUpdate("insert into uzytkownicy (login, haslo, admin)" +
+                    " Select 'admin', 'admin', '1' Where not exists(select * from uzytkownicy where login='admin' AND haslo='admin' AND admin=1)");
 
         } catch (SQLException e) {
             e.printStackTrace();
